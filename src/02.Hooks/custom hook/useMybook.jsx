@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 // 自定义的Hook useMyBook
 function useMyBook() {
-  const [bookName, setBookName] = useState('React 学习')
+  const [bookName, setBookName] = useState('React learning')
   return {
     bookName,
     setBookName
@@ -15,7 +15,7 @@ export default useMyBook
   除了使用官方内置的 Hook，我们还可以自定义 Hook，自定义 Hook 的本质其实就是函数，
   但是和普通函数还是有一些区别，主要体现在以下2个点：
     - 自定义 Hook 能够调用诸如 useState、useRef等，普通函数则不能
-      由此可以通过内置的 Hooks 获得 Fiber 的访问方式，可以实现在组件级别存储数据的方案等
+      自定义 Hook 由此可以通过内置的 Hooks 获得 Fiber 的访问方式，可以实现在组件级别存储数据的方案等
   
       自定义Hook和普通函数之间最大的区别就在于：函数有没有使用react内置的hook，
       如果使用了内置的hook，那么就是自定义hook，如果没有使用内置的hook，那么就是普通函数，

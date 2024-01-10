@@ -1,3 +1,1 @@
-### myreactdemos
-
-### React exercices
+### My some React exercises demos

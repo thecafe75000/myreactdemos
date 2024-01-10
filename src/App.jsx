@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import useMyBook from './02.Hooks/custom hook/useMybook'
 
 function App() {
-  const { bookName, setBookName } = useMyBook()
+  
   const [value, setValue] = useState('')
 
   function changeHandle(e) {
@@ -10,13 +9,12 @@ function App() {
   }
 
   function clickHandle() {
-    setBookName(value)
+   
   }
 
   return (
     <div>
-      <div>{bookName}</div>
-      <input type='text' value={value} onChange={changeHandle} />
+      
       <button onClick={clickHandle}>确定</button>
     </div>
   )

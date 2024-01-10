@@ -17,7 +17,7 @@ function App() {
     <div>
       <div>{bookName}</div>
       <input type='text' value={value} onChange={changeHandle} />
-      <button onClick={clickHandle}>确定</button>
+      <button onClick={clickHandle}>Confirm</button>
     </div>
   )
 }
