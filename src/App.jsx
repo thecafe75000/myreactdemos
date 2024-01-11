@@ -9,13 +9,13 @@ function App() {
   }
 
   function clickHandle() {
-   
+   console.log('value is ', value)
   }
 
   return (
-    <div>
-      
-      <button onClick={clickHandle}>确定</button>
+    <div>  
+      <input type="text" value={value} onChange={ changeHandle } />
+      <button onClick={clickHandle}>Confirm</button>
     </div>
   )
 }

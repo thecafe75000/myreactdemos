@@ -25,4 +25,7 @@ export default useMyBook
   
 当有业务的拆分时，常用到自定义Hook，把业务拆分成一个个小的函数，而这些小的函数又需要状态的共享等情况，会使用到React内置的Hook useState, useRef等
 
+自定义 Hook 很多时候是状态和操作状态的封装，也就是 state 和 action,
+业内比较推荐二元组的格式[state, action], action如果很多，就返回[state,{ation, action}]
+
 */
