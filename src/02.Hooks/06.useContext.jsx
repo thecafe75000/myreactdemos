@@ -18,23 +18,29 @@ const AppContext = createContext({})
 function Header() {
   //? 使用 useContext 来获取父组件App的共享数据
   //? useContext()的参数就是数据所在的父组件或祖辈组件的上下文对象
-  const { count } = useContext(AppContext)
+  const { count, setCount } = useContext(AppContext)
+
+  const handleClick = () => {
+    setCount(x=> x+1)
+  }
 
   return (
     <div>
       <h2>Header</h2>
-      <div>count: {count}</div>
+      <div>count in Header: {count}</div>
+      <button onClick={handleClick}>Change count</button>
     </div>
   )
 }
 
 //? 子组件
 function Footer() {
-  const { name } = useContext(AppContext)
+  const { count, name } = useContext(AppContext)
 
   return (
     <div>
       <h2>Footer</h2>
+      <div>count in Footer: { count }</div>
       <div>name: {name}</div>
     </div>
   )
@@ -42,18 +48,17 @@ function Footer() {
 
 //? 父组件
 function App() {
-  const [count] = useState(10)
+  const [count,setCount] = useState(10)
 
   return (
     <div>
       <h1>App</h1>
       {/* <AppContext.Provider> 组件的 value 属性的数据会共享给组件 App 的所有后代组件 */}
-      <AppContext.Provider value={{ count, name: 'Carine' }}>
+      <AppContext.Provider value={{ count, name: 'Carine', setCount}}>
         <Header />
         <Footer />
       </AppContext.Provider>
     </div>
   )
 }
-
 export default App
