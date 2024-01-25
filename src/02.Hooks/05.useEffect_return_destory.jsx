@@ -35,3 +35,12 @@ function App() {
 
 export default App
 
+/**
+ *  useEffect()的执行时机: 
+ *    - 对于 useEffect 的执行，React 把它的回调函数放在了异步队列
+ *    - 当主线程执行完毕，就会立马执行useEffect的回调函数
+ *  
+ *  具体就是useEffect()的执行时机有2种情况：
+ *    1- 在组件挂载渲染完成后执行 (类似类组件的componentDidMount)
+ *    2- 当组件更新以后就会触发执行 (类似类组件的componentDidUpdate)
+ */

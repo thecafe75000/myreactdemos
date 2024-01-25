@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
   
-  useEffect(() => {
-    
-  },[])
+//? 父组件
+function App() {
 
   return (
     <div>
-      <h1>App: {count}</h1>
-      <button onClick={()=>{setCount(x => x+1)}}>+1</button>
+      React
     </div>
   )
 }
