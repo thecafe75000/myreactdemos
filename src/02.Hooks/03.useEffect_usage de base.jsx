@@ -3,7 +3,13 @@ import { useEffect, useState } from 'react'
 function App() {
   const [count, setCount] = useState(0)
 
-  //? useEffect()第1个参数是函数，在其里面写副作用，会在组件渲染完成后执行
+  /* useEffect()第1个参数是函数，在其里面写副作用，会在组件挂载渲染完成后执行，其主要工作类似类组件中的生命周期函数
+     语法：useEffect(()=>, dependencyArray)
+          dependencyArray 是可选参数(是个数组), 包含了当前useEffect的依赖项，可以存在一个或多个依赖项
+            1- 如果是空数组，表示依赖项为空，即没有依赖项，那么当前的 useEffect() 只会在初始化的时候执行
+            2- 如果不是空数组，表示有依赖项，如果依赖项中有state数据，则除了初始化会执行一次以外，只有依赖项
+               的数据更新以后，才会执行当前的useEffect()
+   */
   useEffect(() => {
     //! 这里写副作用
     document.title = `you clicked ${count} times`
@@ -33,9 +39,11 @@ function App() {
 
 /*
   常见的副作用有:
-    - 发送网络请求
+    - 发送网络请求，获取数据(data fetching)
+    - 事件监听或订阅(setting up a subscription)
     - 添加一些监听的注册和取消注册
-    - 手动修改 DOM
+    - 手动修改 DOM(changing the DOM )
+    - 输出日志(logging)
 
   以前我们是将这些副作用写在类组件的生命周期钩子函数里面，现在就可以书写在函数组件的 useEffect 这个 Hook 里面
 
