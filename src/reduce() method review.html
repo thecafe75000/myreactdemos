@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        . : 点是"成员访问运算符"
+       [] : 方括号是需"计算的成员访问运算符"
+
+        []的使用场景:1.key是一个变量  2.key是不规则字符串
+
+      */
+      /*
+        已知字符串"ahddhkabasdbasbdsbbdabask";
+        求出现最多次数的字符，及次数
+      */
+
+      const str = "ahddhkabaasdbbasbdsbbdabbask";
+
+      //1.把字符串转数组，方便遍历
+      const result = str.split("").reduce((p, c) => {
+        p[c] ? p[c]++ : (p[c] = 1);
+        return p;
+      }, {});
+
+      console.log("result:", result); // {a: 7, h: 2, d: 5, k: 2, b: 8, s:4}
+
+      //定义一个变量保存出现最多的字符
+      let maxStr = "";
+      let maxNum = 0;
+
+      for (var key in result) {
+        //判断当前遍历的属性的值是否大于我的maxNum
+        if (result[key] >= maxNum) {
+          maxNum = result[key];
+          maxStr = key;
+        }
+      }
+
+     console.log("出现次数最多的字符是:", maxStr, "它出现的次数是", maxNum); 
+
+     // 找出出现最多的字符还可以使用方法 keys(), 该方法返回由对象键key组成的数组
+     const keys = Object.keys(result)
+     console.log("keys: ", keys) // ['a', 'h', 'd', 'k', 'b', 's']
+
+     let mostKey = keys[0]
+
+      for (let key in result) {
+        if (result[key] > result[mostKey]) {
+          mostKey = key
+        }
+      }
+
+      console.log("出现次数最多的字符是:", mostKey)
+      console.log("出现次数是:", result[mostKey])
+
+
+      /* 
+        已知一个地址:http://www.google.com?a=1&b=2&c=3
+        把查询字符串的数据转为对象
+      
+      */
+
+      const str2 = "http://www.google.com?a=1&b=2&c=3";
+      const result2 = str2
+        .split("?")[1]
+        .split("&")
+        .reduce((p, c) => {
+          const [key, value] = c.split("=");
+          p[key] = value;
+          return p;
+        }, {});
+
+      console.log("第1次分割用?的结果", str2.split("?")) // ['http://www.google.com', 'a=1&b=2&c=3']
+      console.log("获取?后的查询字符串", str2.split("?")[1]) // 获取了查询字符串 a=1&b=2&c=3
+      console.log("第2次继续分割用&的结果", str2.split("?")[1].split("&")) // ['a=1', 'b=2', 'c=3']
+      
+      console.log(result2); // 用reduce方法把数组转换为对象 {a: '1', b: '2', c: '3'}
+    </script>
+  </body>
+</html>
