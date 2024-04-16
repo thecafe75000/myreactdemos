@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
  *   https://reactrouter.com/en/main/hooks/use-navigate
  */
 
-function useLogoutTimer() {
+export default function useLogoutTimer() {
   const navigate = useNavigate()
 
   navigate('/new-route', { state: { key: 'value' } })
